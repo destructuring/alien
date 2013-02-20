@@ -1,5 +1,5 @@
 ---
 remotes:
-  primary: git@github.com:destructuring/destructuring
-  secondary: git@bitbucket.org:destructuring/destructuring
+  primary: git@github.com:destructuring/alien
+  secondary: git@bitbucket.org:destructuring/alien
   rb: https://github.com/destructuring/rb-helper
