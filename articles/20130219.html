@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <link href="css/bootstrap-min.css" rel="stylesheet" media="screen">
+    <link href="css/application.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+    <h2>Tuesday, February 19, 2013</h2>
+
+<p>Decided I&#39;d write a post everyday I did something cool at my desk, get
+into a habit of writing, similar to a resolve to commit things in my
+$HOME directory to GitHub.  I write a lot of code but barely any
+documentation (and don&#39;t ask me about tests).</p>
+
+<p>This repo, alien, is a basic ghp (git home page) project that generates
+a static site and publishes to GitHub Pages.  This article is published
+using a bunch of custom tools:</p>
+
+<pre><code>new article
+vi content/articles/20130219.md
+build site
+publish site
+git sync --all
+</code></pre>
+
+<h2>awsme</h2>
+
+<p>The new job is 100% on ec2 but the build tools had a lot of hardcoded
+strings and didn&#39;t deal with setup.  <code>awsme</code> brings the <code>ec2/ami</code> cli
+tools, the new <code>aws</code> Python tool, and the ruby <code>aws-sdk</code> library together
+with a single credentials configuration file in <code>config/aws.yml</code>.</p>
+
+<p>The <code>ec2/ami</code> tools are wrapped so I can automatically supply credentials
+and echo the commands.  You supply the binaries in <code>vendor/projects</code> and
+then run <code>bin/setup projects</code> for the wrappers into <code>install/</code></p>
+
+<p>The <code>aws</code> Python is vendored into <code>vendor/cache/pip/</code> with a
+<code>virtualenv</code> configuration that doesn&#39;t require network access.  It&#39;s
+useful enough that I created a project <code>puddle</code>, a Python &quot;bundler&quot; of
+sorts.</p>
+
+<h2>Miscellaneous scripts</h2>
+
+<p>Split out miscellaneous scripts from my <code>home</code> project into <code>whatever</code>,
+seeding it with my <code>talign</code> script that formats input into columns
+(useful for <code>df</code> output).  I&#39;ll be add json and yaml stable sort
+formatters, soon.</p>
+
+<h2>Miscellaneous notes</h2>
+
+<p>I used Dropbox to sync text notes but this felt wrong.  To my <code>paul</code>
+project I added <code>git gist</code> which lets me list gists:</p>
+
+<pre><code>git gist destructuring
+</code></pre>
+
+<p>Then I can use an egrep-compatible regex to narrow the list to one item,
+and it gets cloned:</p>
+
+<pre><code>git gist destructuring notes
+</code></pre>
+
+<h2>tome</h2>
+
+<p>Packages that start services and provide configuration files conflict
+with config management because you have two sources of truth for what is
+run and written.  <code>tome</code>, which I came across while reading about
+lobotomy, means to cut, and is a top-level project about Ubuntu packages
+that have startup scripts and config files surgically removed; the
+package is sewn together and hopefully adjusts to its new managed
+environment.</p>
+
+<p>There are lots of smaller ideas for tools to support <code>tome</code> because
+things like the Debian package format and <code>reprepro</code> are crazy arcane.</p>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-min.js"></script>
+    <script src="js/application.js></script>
+	</body>
+</html>

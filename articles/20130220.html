@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <link href="css/bootstrap-min.css" rel="stylesheet" media="screen">
+    <link href="css/application.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+    <h2>Wednesday, February 20, 2013</h2>
+
+<h2>diffable json/yaml</h2>
+
+<p>Across different processes and inputs, a hash serialized into json/yaml
+won&#39;t be suitable for committing into a git repo with sensible diffs.
+In <code>whatever</code> I wrote four dumb scripts that operate on stdin/stdout:
+json2json, json2yaml, yaml2yaml, yaml2json, which is supposed to run
+through a bunch of files, load them into memory and emit them with
+sorted keys.  Makes it easy to keep track of build artifacts, know
+what&#39;s changed, and to run tests.</p>
+
+<h2>chef 11</h2>
+
+<p>Merged chef 11.4.0 into microwave and found much breakage under
+chef-solo, mostly because my cookbooks were bad.  The things I had to
+fix:</p>
+
+<ul>
+<li>node_path is gone so jave to use -j to pass in initial node dns</li>
+<li>explicitly declare attributes as default, normal, or override</li>
+<li>declare cookbook dependencies in metadata.rb</li>
+<li>ensure each recipe had an attributes pair</li>
+<li>ensure cookbooks are loaded by being listed in run_list</li>
+<li>identify recipes that are just used for include_recipe</li>
+</ul>
+
+<p>I&#39;m pleased the breaking changes in chef 11 will make my cookbooks more
+like libraries than scripts.  This means microwave tvdinners (cookbooks
+as gems) will look more like software components.  Anything to get away
+from a monolithic chef repo.</p>
+
+<h2>updated tvdinners: alpha_omega, runit, unicorn</h2>
+
+<p>Working on a <code>gollum</code> service (which will be put into a gem named
+tvd-gollum) that runs under <code>unicorn</code>, managed by <code>runit</code>, and
+eventually deployable by <code>alpha_omega</code>, with <code>microwave</code> (<code>chef</code> 11
+fork) assembling all the moving parts.  This should work without root,
+anchored to a release directory, on OS X and Ubuntu.</p>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-min.js"></script>
+    <script src="js/application.js></script>
+	</body>
+</html>
