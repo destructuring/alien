@@ -1,6 +1,6 @@
 <tt>
 [Thu][20130221]: microwave as generator, adding cf/as
-to awsme, and admitting I'm a terrible programer
+to awsme, tvd-gollum, and admitting I'm a terrible programer
 
 [Wed][20130220]: json/yaml sorting, microwave + chef
 11, and tvdinners (alpha_omega, runit, unicorn), a bit of gollum
