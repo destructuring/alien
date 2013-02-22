@@ -19,8 +19,6 @@ DEFINE_string "message" "published $(date)" "commit message for published conten
 
 # entry point
 function main {
-  set -x
-
   if [[ "$#" = 0 ]]; then
     local src_dir="output"
   else
@@ -59,6 +57,8 @@ function main {
     git commit -m "initializing disconnected branch $dst_branch"
     git clean -fdx
   fi
+
+  git pull origin "$dst_branch"
 
   if [[ "$FLAGS_clean" = "$FLAGS_TRUE" ]]; then
     git rm -rf .
