@@ -1,4 +1,6 @@
 <tt>
+### David Romulan: I feel like an alien.
+
 [Thu][20130221]: microwave as generator, adding cf/as
 to awsme, tvd-gollum, and admitting I'm a terrible programer
 
