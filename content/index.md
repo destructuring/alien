@@ -12,6 +12,8 @@
 
 #### [Tue, Feb 19, 2013][20130219]: awsme, whatever, git gist, tome, puddle, and alien
 
+![GitHub Contributions][ghcontrib]
+
 </tt>
 
 [20130224]: articles/20130224.html
@@ -19,3 +21,4 @@
 [20130221]: articles/20130221.html
 [20130220]: articles/20130220.html
 [20130219]: articles/20130219.html
+[ghcontrib]: img/contrib.png
