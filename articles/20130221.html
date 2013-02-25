@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <link href="css/bootstrap-min.css" rel="stylesheet" media="screen">
+    <link href="css/application.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+    <h2>Thursday, February 21, 2013</h2>
+
+<h2>microwave to generate scaffolding</h2>
+
+<p>A <code>aws.yml</code> file contains the access and secret keys.  Wanted to
+generate a <code>aws.txt</code> file for Cloud Formation using <code>aws.yml</code> which
+should have been an easy yaml load and merge with an erb template.</p>
+
+<p>I used microwave to generate aws.txt with chef cookbooks.  The overhead
+amounted to an empty <code>etc/chef/solo.rb</code> to silence warnings, a fake file
+for the dna: <code>-j &lt;(echo &#39;{&quot;run_list&quot;:[&quot;awsme&quot;]}&#39;)</code>, and the <code>awsme</code>
+cookbook, which was simply attributes, templates, and recipes.  Could
+have used <code>chef</code> or <code>microwave</code>.</p>
+
+<p>It&#39;d be nice if all the overhead and structure could collapse into a
+single file, with a <code>#!/usr/bin/env microwave</code> and chef resources as the
+script.  You could pass in dns to override defaults.  I think this is
+what I mean when I created the git repo placeholder for <code>takeout</code>.</p>
+
+<h2>cloud formation and auto scaling cli tools</h2>
+
+<p>Added cloud formation and auto scaling cli tools to <code>awsme</code> but couldn&#39;t
+link them from <code>vendor/projects/</code> to  <code>install</code> because they both had a
+path collision <code>bin/service</code>.  No big deal but I had to hardcode their
+directory names.</p>
+
+<p>I can git clone <code>awsme</code>, configure <code>config/aws.yml</code> with my credentials,
+run <code>bin/setu projects</code>, and then <code>bin/shell</code> will run microwave,
+install a Python virtualenv, and bundle Ruby gems, with the right
+environment variables to run the various official AWS tools.</p>
+
+<h2>tvd-gollum</h2>
+
+<p>Got a <code>gollum</code> tvdinner working.  The repo can use itself, and I&#39;ve
+embedded it into my <code>home</code> project, too.  I&#39;m happy how this turned out.</p>
+
+<h2>I&#39;m a terrible programmer</h2>
+
+<p>I spent a few years writing Capistrano and Chef ruby scripts, which
+worked for its time, with some neat features.  I did it with sweat and
+enthusiasm but I knew it was bad code because I&#39;d look at the Vagrant
+source, seen how you should arrange plugins, etc.</p>
+
+<p>Someone&#39;s no doubt redone my scripts in a couple months since I&#39;ve left.
+If they open source it, I&#39;ll use it.  I&#39;ll use anything nice and
+available.  I can&#39;t write nice stuff on my own, not from scratch at
+least.</p>
+
+<p>You still need someone like me on the team because someone who can
+program better than me should be working on product.  I can glue things
+together, make things work with minimal probing (of humans).  This gets
+repeated up and down, each to his own level of skill.</p>
+
+<h2>emulating good design</h2>
+
+<p>If I can structure my ruby programs like Vagrant where there&#39;s lots of
+plugins, middleware, lots of modules and files that do one thing very
+well and are easy to compose, I can limit how crappy monolithic scriptly
+my projects get.</p>
+
+<p>Also learn how to name things.</p>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-min.js"></script>
+    <script src="js/application.js></script>
+	</body>
+</html>

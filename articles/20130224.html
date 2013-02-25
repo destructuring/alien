@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <link href="css/bootstrap-min.css" rel="stylesheet" media="screen">
+    <link href="css/application.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+    <h2>Sunday , February 24, 2013</h2>
+
+<h2>make for project dependencies</h2>
+
+<p>Using make to build a project&#39;s basic requirements to run scripts, such
+as git submodules, bundling ruby gems, and creating python virtualenvs.
+In scripts, just call <code>make</code> as the first thing in your project&#39;s home.</p>
+
+<h2>microwave for project setup</h2>
+
+<p>After make, microwave can set up a project where git versioning is not
+enough.  Since some setup cannot be automated, like putting your
+credentials into <code>config/aws.yml</code>, microwave is not called in the
+Makefile.</p>
+
+<p>microwave is, for now, a symlink to chef-solo.  I tried using chef-apply
+but that doesn&#39;t load cookbook attributes, etc.  I&#39;d rather load a
+cookbook&#39;s files and alter the run_list to run different recipe scripts.</p>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-min.js"></script>
+    <script src="js/application.js></script>
+	</body>
+</html>
