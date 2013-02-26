@@ -22,7 +22,7 @@ compile '*' do
     filter :redcarpet
   end
 
-  layout 'default'
+  layout 'alien'
 end
 
 route "/" do

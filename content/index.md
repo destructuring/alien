@@ -1,5 +1,3 @@
-<tt>
-
 ## David Romulan: I feel like an alien.
 
 #### [Mon][20130225], Feb 25, 2013: privilege package/service resources, secrets with gandalf, conf.d style config, first pair programming, and conventions for configuration
@@ -16,9 +14,6 @@
 
 #### [Tue][20130219], Feb 19, 2013: awsme, whatever, git gist, tome, puddle, and alien
 
-
-</tt>
-
 [20130225]: articles/20130225.html
 [20130224]: articles/20130224.html
 [20130222]: articles/20130222.html
@@ -26,4 +21,3 @@
 [20130220]: articles/20130220.html
 [20130219]: articles/20130219.html
 [ghcontrib]: img/contrib.png
-
