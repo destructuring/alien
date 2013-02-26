@@ -5,9 +5,86 @@
     <link href="css/application.css" rel="stylesheet" media="screen">
 	</head>
 	<body>
-    <p>setting up ruby on precise, using the os default
-socket and Socket on chef
-sudo version of package on Ubuntu</p>
+    <h2>Monday, February 25, 2013</h2>
+
+<h2>privilege package and service resources</h2>
+
+<p>As microwave is run as non-root in most applications, how does it
+install packages and restart services?  Since package and service
+resources call <code>aptitude</code> and <code>service</code>, why not enhance them to run
+under sudo, and white list the packages and services that an application
+can affect?</p>
+
+<h2>managing secrets</h2>
+
+<p>My <code>gandalf</code> project is a gpg wrapper to manage various bundles with
+varying levels of access.  It is used to manage personal secrets as well
+as shared company passwords among different departments.</p>
+
+<p>A flow for an external contractor assumes a bundle named <code>contractors</code>.
+The secrets are stored in a private git repo, which they can clone
+because they are also in a contractors&#39; team on GitHub with RO access.</p>
+
+<p>The contractor runs <code>bin/new key email@domain.com</code>, adds their new gpg
+public key, and makes a pull request.  Admin merges the pull request and
+re-encrypts the contractors bundle, which the contractor can now
+decrypt.</p>
+
+<p><code>gandalf</code> doesn&#39;t solve the problem of changing passwords when an admin
+leaves, but at least you can easily remove his access and re-encrypt the
+new passwords.</p>
+
+<h2>conf.d style configuration</h2>
+
+<p>Had to add a site to a brand new nginx, so dropped it into <code>conf.d</code>
+directory and symlinked it into an activations directory.  If apps
+generated their own nginx configuration, the activations directory could
+directly link to the apps.  Combined with the sudo service resources,
+microwaved apps can minimize going into root territory and generate
+files that are used by containers, whether it&#39;s Ubuntu root or OS X
+user.</p>
+
+<h2>first time pair programming</h2>
+
+<p>By pair programming, I mean two people with one screen, one keyboard,
+working on an issue.  As the noob, I followed the driver implementing an
+nginx maintenance page.  I spent most of my time discussing the
+requirements and implications of the chosen implementation.  Having two
+minds think about these things catches a lot of errors, and serves as a
+sort of QA.  Both of us left with an understanding how why we chose the
+implementation and all the problems/tradeoffs left behind.  I could
+easily have spent 2x the time my myself just figuring things out.</p>
+
+<h2>conventions for configuring a utility</h2>
+
+<p>My utilities are anchored wherever they are checked out, calling this
+<code>$shome</code>.  Some projects are easy and configuration is relative to
+<code>$shome</code>.  Thus you git clone a project and start editing in that
+project.</p>
+
+<p>Other projects can meant to be used with configuration stored elsewhere.
+How to make it simple to use for a user and easy to maintain for a
+developer?</p>
+
+<p>The user git clones a project to a location, call it <code>$shome</code>.  The
+configuration is relative to <code>$HOME</code>.  To source the project&#39;s bash
+profile, use <code>source $shome/libexec/_project $HOME</code>, the <code>$HOME</code> part
+configures the base directory for configuration.</p>
+
+<p>In <code>_project</code>, initialize a PROJECT_ROOT variable like:</p>
+
+<pre><code>if [[ &quot;$#&quot; &gt; 0 &amp;&amp; -n &quot;${PROJECT_ROOT:-}&quot; ]]; then
+  PROJECT_ROOT=&quot;$1&quot;; shift
+else
+  PROJECT_ROOT=&quot;$(cd -P -- &quot;$(dirname -- &quot;${BASH_SOURCE}&quot;)/..&quot; &amp;&amp; pwd -P)&quot;
+fi  
+
+export PROJECT_ROOT
+</code></pre>
+
+<p>The project can source the same <code>_profile</code> with <code>source $shome &quot;${PROJECT_ROOT:-$shome}&quot;</code>.  This lets the project default to <code>$shome</code> if nothing has already configured the project.</p>
+
+<p>Scripts shoudld access <code>$PROJECT_ROOT</code> for relocatable resources like configuration files.  Otherwise <code>$shome</code> is the root of the project and using it to fully qualify your paths means projects can be anchored anywhere in the file system, and even have multiple instances.</p>
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap-min.js"></script>
