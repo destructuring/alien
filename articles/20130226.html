@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <link href="css/bootstrap-min.css" rel="stylesheet" media="screen">
+    <link href="css/application.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+    <div class="span12"><tt>
+    <h2>Tuesday, February 26, 2013</h2>
+
+<h2>tvdinner testing</h2>
+
+<p>Including <code>chefspec</code>, <code>food critic</code>, and <code>minitest-chef-handler</code> in the
+tvdinner recommendation.  <code>chefspec</code> is quick mocks to validate chef
+resources have the right attributes.  For heavier tests,
+<code>minitest-chef-handler</code> can be run in <code>ci</code> and test actual side effects.
+<code>food critic</code> needs ruby 1.9 but can also quickly run in parallel with
+<code>chefspec</code>.</p>
+
+<h2>generating parts of a file</h2>
+
+<p><code>conf.d</code> style is easiest for constructing parts of a configuration but
+sometimes you have to modify a section or the container.  Sections are
+easy, just surround the part with begin and end comments.  Containers
+are trickier since their comments temporarily consome original content
+and then spit it back out.  The two styles can be combined!</p>
+
+<h2>monitoring runit services</h2>
+
+<p>If you have several runit services, say resque workers, you could run a
+runit service that monitors the others.  It knows how to enumerate based
+on name, can find the pid.  It should even be able to use remove or add
+more workers.  It&#39;d be easy to disable services and monitor at once
+with a grouping naming scheme.</p>
+
+<h2>lightweight monitoring agents</h2>
+
+<p>I like agents that collect data and forward to a central host.  It can
+also receive simple commands.  The central host is the big beast that
+can run anything it wants to calculate a response, and dispatches orders
+to the agents.  Erlang sounds like a good fit here.</p>
+
+<h2>deploying cookbooks to newly provisioned machines</h2>
+
+<p>On ec2 and vagrant (virtualbox), it&#39;s easy to spin up an instance,
+insert an ssh key, and wait for the ip address to come up for ssh
+access.  After this ssh bootstrap, a machine can be configured with chef
+by deploying the cookbooks to the instance like an application.</p>
+
+    </tt></div>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-min.js"></script>
+    <script src="js/application.js"></script>
+	</body>
+</html>

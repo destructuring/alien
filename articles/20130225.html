@@ -5,7 +5,7 @@
     <link href="css/application.css" rel="stylesheet" media="screen">
 	</head>
 	<body>
-    <div class="span4"><tt>
+    <div class="span12"><tt>
     <h2>Monday, February 25, 2013</h2>
 
 <h2>privilege package and service resources</h2>
@@ -69,8 +69,8 @@ developer?</p>
 
 <p>The user git clones a project to a location, call it <code>$shome</code>.  The
 configuration is relative to <code>$HOME</code>.  To source the project&#39;s bash
-profile, use <code>source $shome/libexec/_project $HOME</code>, the <code>$HOME</code> part
-configures the base directory for configuration.</p>
+profile, use <code>source $shome/libexec/_project ${PROJECT_ROOT:-$HOME}</code>,
+the <code>$HOME</code> part configures the base directory for configuration.</p>
 
 <p>In <code>_project</code>, initialize a PROJECT_ROOT variable like:</p>
 
@@ -83,9 +83,14 @@ fi
 export PROJECT_ROOT
 </code></pre>
 
-<p>The project can source the same <code>_profile</code> with <code>source $shome &quot;${PROJECT_ROOT:-$shome}&quot;</code>.  This lets the project default to <code>$shome</code> if nothing has already configured the project.</p>
+<p>The project can source the same <code>_profile</code> with <code>source $shome
+&quot;${PROJECT_ROOT:-$shome}&quot;</code>.  This lets the project default to <code>$shome</code>
+if nothing has already configured the project.</p>
 
-<p>Scripts shoudld access <code>$PROJECT_ROOT</code> for relocatable resources like configuration files.  Otherwise <code>$shome</code> is the root of the project and using it to fully qualify your paths means projects can be anchored anywhere in the file system, and even have multiple instances.</p>
+<p>Scripts shoudl access <code>$PROJECT_ROOT</code> for relocatable resources like
+configuration files.  Otherwise <code>$shome</code> is the root of the project and
+using it to fully qualify your paths means projects can be anchored
+anywhere in the file system, and even have multiple instances.</p>
 
     </tt></div>
     <script src="js/jquery.js"></script>
