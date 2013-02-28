@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <link href="css/bootstrap-min.css" rel="stylesheet" media="screen">
+    <link href="css/application.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+    <div class="span12"><tt>
+    <h2>Wednesday, February 27, 2013</h2>
+
+<h2>using the same bootstrap on vagrants</h2>
+
+<p>I use the same short bootstrap on vagrant as I do on ec2.  There&#39;s
+additional setup for a virtualbox environment for guest additions and
+making network work.  Turns out I don&#39;t need cloud-init images so Ubuntu
+Cloud Images for vagrant may not be worth the beta nature, but it sure
+beats building my own boxes from scratch.  I will continue to maintain
+those scripts since you should never lose basic capability.</p>
+
+<h2>rvm deb packages</h2>
+
+<p>Found an Ubuntu rvm deb package, somewhat old since rvm changes so much.
+Once <code>tome</code> is started, rvm will be the first thing that gets regular
+updates as debs.</p>
+
+<h2>quitting linkedin</h2>
+
+<p>LinkedIn sends me emails with subscribe links that require login.  I
+will cancel accounts with companies that do scummy things like that.
+Also, LinkedIn is not how you get jobs.</p>
+
+<h2>stable chef logs</h2>
+
+<p>When enumerating a hash, the keys order is not stable (even in 1.9 I
+don&#39;t now what their defintion of stable order is) so always sort the
+hash before generating resources.  It&#39;ll execute resources in the same
+order and make comparing chef logs easier.</p>
+
+<p>Diffing a few differences in chef logs is a cheap way to verify your
+chef changes.  Expecting nginx mods but also seeing ssh keys changing?
+Better check that out.</p>
+
+<h2>package resource slow</h2>
+
+<p>Why is the package provider on Ubuntu slow?  It better not be installing
+anything again and again.  On Solaris, packaging listing was crazy slow.
+Maybe it&#39;s something like that.</p>
+
+<h2>nginx proxy to spin up ec2 clusters</h2>
+
+<p>Say you have twenty staging environments for teams, individuals, and
+various testing environments.  If they spun down during non-core hours,
+you can still have them automatically spin up if someone visits a
+website.  It&#39;s better than getting no response and logging into a shell
+to run some commands.  I got the idea from a web proxy that spun up an
+Erlang instance for every request.</p>
+
+<h2>polling for state change</h2>
+
+<p>WIth ec2 and vagrant, I have to poll for machine state and tcp port
+readiness (ssh, http).  Seems like there&#39;s set of bash functions to help</p>
+
+<h2>flock</h2>
+
+<p>flock is neat, use it to ensure only one process is running.  Needs
+monitoring around stale locks, though.</p>
+
+<h2>git upstream branch tracking</h2>
+
+<p>Make sure <code>git push</code> only pushes one branch, and that local and remote
+branch names match.  A git prompt should detect when the remote does not
+match local; also detect if the git push tracking policy may push all
+branches -- who does that?</p>
+
+<h2>tail with a toc</h2>
+
+<p>If tailing a file was fed into a specialize program that looked for
+markers, like <code>### initializing disks</code>, those markers could be a textual
+progress list on the left column, while the right had the tailed logs.
+It&#39;d look like comments to a plain tail.</p>
+
+    </tt></div>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-min.js"></script>
+    <script src="js/application.js"></script>
+	</body>
+</html>
